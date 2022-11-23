@@ -1,0 +1,172 @@
+<form class="b4e sheets char-sheet" autocomplete="off">
+    {{#if actor.sheet._minimized}}
+
+    <!-------------------->
+    <!--    Compact     -->
+    <!-------------------->
+    <div class="sheet-compact">
+    <div class="header">
+        <img class="portrait" src="{{actor.prototypeToken.texture.src}}" data-edit="token" title="{{actor.name}}" />
+        <div class="title-row">
+            <input class="title-name" type="text" name="name" value="{{actor.name}}" />
+            <span class="title-info">Level 1 Human Fighter</span>
+        </div>
+    </div>
+    </div>
+    <!-------------------->
+    <!--   End Compact  -->
+    <!-------------------->
+
+    {{else}}
+
+    <!-------------------->
+    <!--    Full Size   -->
+    <!-------------------->
+    <div class="sheet-full">
+        <div class="edit-sheet"><i class="fas fa-pen-to-square"></i></div>
+    <div class="header">
+        <div class="portrait">
+            <img class="portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+        </div>
+        <div class="info-col">
+            <div class="title-row">
+                <input class="title-name edit-field" type="text" name="name" value="{{actor.name}}" />
+                <span class="title-info">
+                    Level {{numberInput actor.system.level class="level edit-field" name="system.level" step=1 min=0 max=20}}
+                    {{#if actor.hasSpecies}}
+                    {{#each actor.species}}
+                    <span class="species-name" id="species-id:{{this.id}}">
+                        {{this.name}}
+                        <span class="species-controls">
+                            <i class="control-species edit-species highlightable fas fa-pen-to-square"></i>
+                            <i class="control-species delete-species highlightable fas fa-trash-can"></i>
+                        </span>
+                    </span>
+                    {{/each}}{{/if}}
+                    Fighter</span>
+            </div>
+            <div class="info-row">
+                <div class="ability-scores">
+                    <div class="score-block">
+                        <label for="system.strength" class="score-label highlightable">Strength</label>
+                        <input class="score-value edit-field" type="number" name="system.strength" value="{{actor.system.strength}}">
+                        <span class="score-value-label">{{actor.derived.strength}}</span>
+                        <span class="score-mod">({{modifier actor.derived.str}})</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="system.dexterity" class="score-label highlightable">Dexterity</label>
+                        <input class="score-value edit-field" type="number" name="system.dexterity" value="{{actor.system.dexterity}}">
+                        <span class="score-value-label">{{actor.derived.dexterity}}</span>
+                        <span class="score-mod">({{modifier actor.derived.dex}})</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="system.charisma" class="score-label highlightable">Charisma</label>
+                        <input class="score-value edit-field" type="number" name="system.charisma" value="{{actor.system.charisma}}">
+                        <span class="score-value-label">{{actor.derived.charisma}}</span>
+                        <span class="score-mod">({{modifier actor.derived.cha}})</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="system.intelligence" class="score-label highlightable">Intelligence</label>
+                        <input class="score-value edit-field" type="number" name="system.intelligence" value="{{actor.system.intelligence}}">
+                        <span class="score-value-label">{{actor.derived.intelligence}}</span>
+                        <span class="score-mod">({{modifier actor.derived.int}})</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="system.luck" class="score-label highlightable">Luck</label>
+                        <input class="score-value edit-field" type="number" name="system.luck" value="{{actor.system.luck}}">
+                        <span class="score-value-label">{{actor.derived.luck}}</span>
+                        <span class="score-mod">({{modifier actor.derived.luk}})</span>
+                    </div>
+                </div>
+                <div class="defense-scores">
+                    <div class="score-block">
+                        <label for="fortitude" class="score-label">Fortitude</label>
+                        <span class="score-value">{{actor.derived.fortitude}}</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="reflexes" class="score-label">Reflexes</label>
+                        <span class="score-value">{{actor.derived.reflexes}}</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="will" class="score-label">Will</label>
+                        <span class="score-value">{{actor.derived.will}}</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="insight" class="score-label">Insight</label>
+                        <span class="score-value">{{actor.derived.insight}}</span>
+                    </div>
+                    <div class="score-block">
+                        <label for="ac" class="score-label">Armor Class</label>
+                        <span class="score-value">{{actor.derived.ac}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="vitals-row">
+                <div>
+                <div class="vitals-block">
+                    <label for="system.hp.value" class="vitals-label">HP</label>
+                    <input class="vitals-value edit-field" type="number" name="system.hp.value" value="{{actor.system.hp.value}}">
+                    <span class="vitals-label slash">/</span>
+                    <span class="vitals-label max">{{actor.system.hp.max}}</span>
+                </div class="vitals=col1">
+                <div class="vitals-block">
+                    <label for="system.wp.value" class="vitals-label">WP</label>
+                    <input class="vitals-value edit-field" type="number" name="system.wp.value" value="{{actor.system.wp.value}}">
+                    <span class="vitals-label slash">/</span>
+                    <span class="vitals-label max">{{actor.system.wp.max}}</span>
+                </div>
+                </div>
+                <div class="vitals-col2">
+                <div class="vitals-block">
+                    <label for="system.xp" class="vitals-label">XP</label>
+                    <input class="vitals-value xp-value edit-field" type="number" name="system.xp" value="{{actor.system.xp}}">
+                </div>
+                <div class="vitals-block">
+                    <label for="system.sp" class="vitals-label">SP</label>
+                    <span class="sp-value">{{actor.derived.sp}} sq.</span>
+                    {{#if (gt actor.derived.fours 0)}}<span class="sp-value">All-Fours {{actor.derived.fours}}</span>{{/if}}
+                    {{#if (gt actor.derived.fly 0)}}<span class="sp-value">Fly {{actor.derived.fly}}</span>{{/if}}
+                    {{#if (gt actor.derived.overland 0)}}<span class="sp-value">Overland {{actor.derived.overland}}</span>{{/if}}
+                    {{#if (gt actor.derived.climb 0)}}<span class="sp-value">Climb {{actor.derived.climb}}</span>{{/if}}
+                    {{#if (gt actor.derived.swim 0)}}<span class="sp-value">Swim {{actor.derived.swim}}</span>{{/if}}
+                    {{#if (gt actor.derived.burrow 0)}}<span class="sp-value">Burrow {{actor.derived.burrow}}</span>{{/if}}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="skills">
+            <div class="skill-header">
+                <span class="skill-header-col1">Skills</span>
+                <span class="skill-header-col2"></span>
+            </div>
+            {{#each itemData.skills}}
+            <div class="skill" id="skill-id:{{this.id}}">
+                <span class="skill-value">
+                    <span class="skill-name highlightable">{{this.name}}</span>
+                </span>
+                <span class="skill-controls-box">
+                    <span class="skill-controls edit-control">
+                        <i class="skill-control highlightable skill-edit fas fa-pen-to-square"></i>
+                        <i class="skill-control highlightable skill-delete fas fa-trash-can"></i>
+                    </span>
+                </span>
+                <span class="skill-modifier">{{modifier this.bonus}}</span>
+                
+            </div>
+            {{/each}}
+            <i class="skill-add edit-control highlightable fas fa-plus"></i>
+        </div>
+        <div class="nav-row">
+            <span>Gear</span><span>Powers</span><span>Feats</span>
+        </div>
+        
+    </div>
+    </div>
+    <!-------------------->
+    <!--  End Full Size -->
+    <!-------------------->
+
+    {{/if}}
+</form>

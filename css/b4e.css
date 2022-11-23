@@ -1,0 +1,383 @@
+﻿:root {
+    /*--font-color: #232b2b;*/
+    --font-color:#353839;
+    --disable-color: #ccc;
+    --highlight-color: #6af;
+}
+
+.sheets * {
+    box-sizing: border-box;
+    color: var(--font-color);
+}
+
+.sheets input[type=text], input[type=number] {
+    border: none;
+    border-radius: 0;
+    background: none;
+    height: 1rem;
+    color: var(--font-color);
+}
+
+.sheets input[type=text]:hover:enabled, input[type=number]:hover:enabled {
+    box-shadow: 0 0 0.5rem 0 var(--highlight-color);
+}
+
+.sheets input[type=text]:disabled, input[type=number]:disabled {
+    color: var(--font-color);
+}
+
+.sheets .highlightable:hover {
+    text-shadow: 0 0 0.5rem var(--highlight-color);
+}
+
+/****************************
+ *                          *
+ * Character Sheet Template * 
+ * character-sheet.html     *
+ *                          *
+ ****************************/
+
+/* Full Size Sheet */
+
+/*.sheet-full * {
+    color: var(--font-color);
+}*/
+
+.sheet-full .edit-sheet {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1rem;
+    height: 1rem;
+    margin: 2.2rem 0.2rem 0 0;
+}
+
+.sheet-full .edit-sheet i {
+    color: var(--disable-color);
+}
+
+.char-sheet .sheet-full .header {
+    display: flex;
+}
+
+.char-sheet .sheet-full .portrait {
+    width: 20.5rem;
+    height: 20.5rem;
+}
+
+.char-sheet .sheet-full .info-col {
+    margin: 0.5rem;
+    width:100%;
+}
+
+.char-sheet .sheet-full .title-row {
+    height: 5rem;
+    border-bottom: 1px solid;
+    margin-bottom: 1rem;
+}
+
+.char-sheet .sheet-full .title-name {
+    font-size: 2.5rem;
+    height: 3rem;
+    width: 98%;
+}
+
+.char-sheet .sheet-full .title-info {
+    display: flex;
+    font-size: 1.5rem;
+    height: 1.5rem;
+}
+
+.char-sheet .sheet-full .level {
+    display: flex;
+    font-size: 1.5rem;
+    height: 1.5rem;
+    width: 2rem;
+    margin: 0.2rem 0.1rem 0 0.1rem;
+    text-align: center;
+}
+
+.sheet-full .species-name {
+    display: flex;
+    margin: 0 0.5rem 0.2rem 0;
+}
+
+.sheet-full .species-controls {
+    display: none;
+    font-size: 0.8rem;
+    margin: 0.7rem 0.4rem 0 0.2rem;
+}
+
+.sheet-full .control-species {
+    margin-right: 0.2rem;
+}
+
+.char-sheet .sheet-full .info-row {
+    display: flex;
+    border-bottom: 1px solid;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.char-sheet .sheet-full .score-block {
+    height: 1.5rem;
+}
+
+.char-sheet .sheet-full .score-label {
+    display: inline-block;
+    font-size: 1rem;
+    width: 5.6rem;
+}
+
+.char-sheet .sheet-full .score-value {
+    font-size: 1rem;
+    width: 1.5rem;
+}
+
+.char-sheet .sheet-full .ability-scores .score-value {
+    display: none;
+}
+
+.char-sheet .sheet-full .score-value-label {
+    display: inline-block;
+    font-size: 1rem;
+    width: 1.5rem;
+}
+
+.char-sheet .sheet-full .defense-scores {
+    margin-left: 4rem;
+}
+
+.char-sheet .sheet-full .vitals-row {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid;
+}
+
+.char-sheet .sheet-full .vitals-label {
+    display: inline-block;
+    font-size: 1.3rem;
+    width: 2rem;
+}
+
+.sheet-full .sp-value {
+    font-size: 1.2rem;
+}
+
+.char-sheet .sheet-full .vitals-value {
+    font-size: 1.3rem;
+    text-align: center;
+    width: 2rem;
+}
+
+.char-sheet .sheet-full .vitals-col2 {
+    margin-left: 4rem;
+}
+
+.char-sheet .sheet-full .xp-value {
+    width: 4rem;
+    text-align: left;
+}
+
+.char-sheet .sheet-full .sp-value {
+    margin-left: 0.2rem;
+    /*width:auto;*/
+}
+
+.char-sheet .sheet-full .max {
+    width: 2rem;
+    height: 1.4rem;
+    text-align: center;
+}
+
+.char-sheet .sheet-full .slash {
+    width: 0.5rem;
+}
+
+.char-sheet .sheet-full .body {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.char-sheet .sheet-full .skills {
+    font-size: 1rem;
+}
+
+.char-sheet .sheet-full .skill-header {
+    display: flex;
+    margin-bottom: 0.2rem;
+    box-shadow: 1px 1px darkgray;
+}
+
+.char-sheet .sheet-full .skill-header 
+.skill-header-col1, .skill-header-col2, .skill-header-col3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    background-color: #d4d1cc;
+    height: 1.5rem;
+}
+
+.sheet-full .skill-header
+.skill-header-col1, .skill-header-col2, .skill-header-col3 {
+    border-right: 1px solid #ccc;
+}
+
+.sheet-full .skills .skill-header-col1 {
+    width: 10rem;
+}
+
+.sheet-full .skills .skill-value {
+    width: 7rem;
+}
+
+.sheet-full .skills .skill-header-col2, .skill-modifier {
+    width: 3rem;
+    text-align: center;
+}
+
+.sheet-full .skills .skill-add {
+    display: none;
+    float: right;
+    margin-right: 1rem;
+}
+
+.sheet-full .skills .skill-controls-box {
+    width: 3rem;
+}
+
+.sheet-full .skills .skill-controls {
+    display: none;
+    text-align: center;
+}
+
+.sheet-full .skill-header .fas {
+    margin-right: 0.2rem;
+}
+
+.char-sheet .sheet-full .skill {
+    display: flex;
+}
+
+.char-sheet .sheet-full .skill-control {
+    font-size: 0.8rem;
+}
+
+.char-sheet .sheet-full .nav-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 1.5rem;
+    border-bottom: 1px solid;
+}
+
+.char-sheet .sheet-full .nav-row span {
+    margin-right: 1rem;
+}
+
+/* Compact Size Sheet */
+
+.char-sheet .sheet-compact .portrait {
+    width: 3rem;
+    height: 3rem;
+}
+
+/************************
+ *                      *
+ * Skill Sheet Template *
+ * skill-sheet.html     *
+ *                      *
+ ************************/
+
+.skill-sheet .rows {
+    display: flex;
+    flex-flow: column;
+}
+
+.skill-sheet .row1 {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 1rem;
+}
+
+.skill-sheet .item-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.skill-sheet .row1 .item-name {
+    font-size: 2.5rem;
+    height: 3rem;
+    padding-left: 0.5rem;
+}
+
+.skill-sheet .row2 {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+}
+
+.skill-sheet .row2 input[type=number] {
+    width: 1.6rem;
+    height: 1.2rem;
+    text-align: center;
+}
+
+/****************************
+ *                          *
+ * Species Sheet Template   *
+ * species-sheet.html       *
+ *                          *
+ ****************************/
+
+.species-sheet .rows {
+    display: flex;
+    flex-flow: column;
+}
+
+.species-sheet .row1 {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 1rem;
+}
+
+.species-sheet .item-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.species-sheet .row1 .item-name {
+    font-size: 2.5rem;
+    height: 3rem;
+    padding-left: 0.5rem;
+}
+
+.species-sheet .row2 {
+    display: flex;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+}
+
+.species-sheet .row2 input[type=number] {
+    width: 1.6rem;
+    height: 1.2rem;
+    text-align: center;
+}
+
+.species-sheet .row2-col2 {
+    margin-left: 4rem;
+}
+
+.species-sheet .row2-col2 label {
+    display: inline-block;
+    width: 5.5rem;
+    font-size: 1rem;
+}
+
+.species-sheet .row2-col2 input[type=number] {
+    width: 2.4rem;
+    text-align: left;
+}

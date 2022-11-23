@@ -1,0 +1,16 @@
+<form class="b4e sheets skill-sheet" autocomplete="off">
+
+    <div class="rows">
+        <div class="row1">
+            <img class="item-icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+            <input class="item-name" type="text" name="name" value="{{item.name}}" />
+        </div>
+        <div class="row2">
+            <label for="system.base" class="skill-label">{{item.skillTitle}}</label>
+            <input class="skill-value" type="number" name="system.base" value="{{item.system.base}}" />
+            <span class="skill-label">+</span>
+            <input class="skill-value" type="number" name="system.modifier" value="{{item.system.modifier}}" />
+        </div>
+    </div>
+
+</form>

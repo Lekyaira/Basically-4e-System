@@ -1,0 +1,39 @@
+<form class="b4e sheets species-sheet">
+
+    <div class="rows">
+        <div class="row1">
+            <img class="item-icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+            <input class="item-name" type="text" name="name" value="{{item.name}}" />
+        </div>
+        <div class="row2">
+            <div class="row2-col1">
+                <div>Modifiers</div>
+                {{#each item.system.abilities as |ab index|}}
+                <div>
+                    <i class="delete-ability highlightable fas fa-trash-can" id="index:{{index}}"></i>
+                    <select name="system.abilities.{{index}}.ability">
+                        {{#select ab.ability}}
+                        {{#each ../item.abilities}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                        {{/select}}
+                    </select>
+                    <input type="number" name="system.abilities.{{index}}.bonus" value="{{ab.bonus}}">
+                </div>
+                {{/each}}
+                <div><i class="add-ability highlightable fas fa-plus"></i></div>
+            </div>
+            <div class="row2-col2">
+                <div>Movement</div>
+                <div><label for="system.sp">SP</label>{{numberInput item.system.sp name="system.sp"}}</div>
+                <div><label for="system.fours">All-Fours</label>{{numberInput item.system.fours name="system.fours"}}</div>
+                <div><label for="system.fly">Fly</label>{{numberInput item.system.fly name="system.fly"}}</div>
+                <div><label for="system.overland">Overland</label>{{numberInput item.system.overland name="system.overland"}}</div>
+                <div><label for="system.climb">Climb</label>{{numberInput item.system.climb name="system.climb"}}</div>
+                <div><label for="system.swim">Swim</label>{{numberInput item.system.swim name="system.swim"}}</div>
+                <div><label for="system.burrow">Burrow</label>{{numberInput item.system.burrow name="system.burrow"}}</div>
+            </div>
+        </div>
+    </div>
+
+</form>

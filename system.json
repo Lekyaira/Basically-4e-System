@@ -1,0 +1,34 @@
+{
+    "name": "b4e",
+    "title": "Basically 4e",
+    "description": "'Basically 4e' Rulesystem.",
+    "version": "0.0.1",
+    "compatibility": {
+        "minimum": 10,
+        "verified": 10,
+        "maximum": 10
+    },
+    "authors": "Ryan Anderson",
+    "esmodules": [ 
+        "core/hooks.js", 
+        "core/utilities.js",
+        "core/handlebars.js",
+        "modules/b4e-actor.js", 
+        "modules/b4e-item.js",
+        "sheets/b4e-actor-sheet.js",
+        "sheets/b4e-item-sheet.js"
+    ],
+    "styles": [
+        "css/b4e.css"
+    ],
+    "packs": [],
+    "languages": [],
+    "gridDistance": 1,
+    "gridUnits": "sq",
+    "primaryTokenAttribute": "hp",
+    "secondaryTokenAttribute": "wp",
+    "url": "",
+    "manifest": "",
+    "download": "",
+    "license": "LICENSE.txt"
+}
