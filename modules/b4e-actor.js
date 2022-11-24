@@ -11,7 +11,9 @@ export class b4eActor extends Actor {
 
     // Derived statistics
     derived = {
-        species: {},
+        species: {
+            skills: []
+        },
 
         sp: 6,
         fly: 0,
@@ -76,8 +78,6 @@ export class b4eActor extends Actor {
         derived.swim = (derived.species['swim'] ? derived.species.swim : 0);
         derived.burrow = (derived.species['burrow'] ? derived.species.burrow : 0);
 
-        // Set saved stats
-
         // Set HP
         data.hp.max = data.level + derived.str + (derived.species['hp'] ? derived.species.hp : 0);
 
@@ -123,6 +123,16 @@ export class b4eActor extends Actor {
                             this.derived.species[ab.ability] = ab.bonus;
                         }
                         // this.derived[ab.ability] += ab.bonus;
+                    }
+
+                    // Set skill bonuses
+                    for(let sk of i.system.skills){
+                        if(this.derived.species.skills[sk.skill]){
+                            this.derived.species.skills[sk.skill] += sk.bonus;
+                        }
+                        else {
+                            this.derived.species.skills[sk.skill] = sk.bonus;
+                        }
                     }
 
                     // Set movement speeds

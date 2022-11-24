@@ -259,11 +259,18 @@ export class b4eActorSheet extends ActorSheet {
             }
             // Append to skills
             if(i.type === "skill") {
+                let speciesBonus = 0;
+                // Loop through the derived skills to see if we get a match
+                for(let sk of this.actor.derived.species.skills){
+                    if(sk.skill === i.name) speciesBonus += sk.bonus;
+                }
+                // Add the bonus to the skill item
+                i.derived.species = speciesBonus;
                 skills.push({
                     id: i.id,
                     img: i.img,
                     name: i.name,
-                    bonus: (i.system.base > 0 ? 2 : 0) + i.system.base + i.system.modifier
+                    bonus: (i.system.base > 0 ? 2 : 0) + i.system.base + i.system.modifier + speciesBonus
                 });
             }
         }
