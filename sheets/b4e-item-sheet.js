@@ -45,7 +45,7 @@ export class b4eItemSheet extends ItemSheet {
 
     setSize() {
         if(this.item.type === "skill"){
-            this.setPosition({width: 400, height: 140});
+            this.setPosition({width: 480, height: 170});
         }
     }
 
