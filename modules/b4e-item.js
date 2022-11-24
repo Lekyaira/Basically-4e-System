@@ -29,7 +29,9 @@ export class b4eItem extends Item {
             "reflexes",
             "will",
             "insight",
-            "ac"
+            "ac",
+            "hp",
+            "wp"
         ]
     }
 
