@@ -79,7 +79,10 @@ export class b4eActor extends Actor {
         // Set saved stats
 
         // Set HP
-        data.hp.max = data.level + derived.str;
+        data.hp.max = data.level + derived.str + (derived.species['hp'] ? derived.species.hp : 0);
+
+        // Set WP
+        data.wp.max = 5 /* <-- This will be set by class later */ + derived.cha + (derived.species['wp'] ? derived.species.wp : 0);
     }
 
     prepareAbilityScores(){

@@ -35,7 +35,6 @@ export class b4eItemSheet extends ItemSheet {
 
     async _updateObject(event, formData){
         formData = expandObject(formData);
-        console.log(formData);
         if(formData['system']){
             if(formData.system['abilities']){
                 formData.system.abilities = Object.values(formData.system.abilities);
@@ -57,9 +56,7 @@ export class b4eItemSheet extends ItemSheet {
         if (!this.isEditable) return;
 
         $('.species-sheet .add-ability').click(ev => {
-            console.log(this.item.system.abilities);
             const abilities = this.item.system.abilities;
-            console.log(abilities);
             abilities.push({
                 ability: this.item.abilities[0],
                 bonus: 0
