@@ -35,5 +35,7 @@ export class b4eItem extends Item {
         ]
     }
 
-    
+    derived = {
+        species: 0
+    };
 }

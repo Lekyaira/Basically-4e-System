@@ -7,7 +7,7 @@
         </div>
         <div class="row2">
             <div class="row2-col1">
-                <div>Modifiers</div>
+                <div>Statistic Modifiers</div>
                 {{#each item.system.abilities as |ab index|}}
                 <div>
                     <i class="delete-ability highlightable fas fa-trash-can" id="index:{{index}}"></i>
@@ -32,6 +32,17 @@
                 <div><label for="system.climb">Climb</label>{{numberInput item.system.climb name="system.climb"}}</div>
                 <div><label for="system.swim">Swim</label>{{numberInput item.system.swim name="system.swim"}}</div>
                 <div><label for="system.burrow">Burrow</label>{{numberInput item.system.burrow name="system.burrow"}}</div>
+            </div>
+            <div class="row2-col3">
+                <div>Skill Modifiers</div>
+                {{#each item.system.skills as |sk index|}}
+                <div>
+                    <i class="delete-skill highlightable fas fa-trash-can" id="index:{{index}}"></i>
+                    <input type="text" name="system.skills.{{index}}.skill" value="{{sk.skill}}">
+                    <input type="number" name="system.skills.{{index}}.bonus" value="{{sk.bonus}}">
+                </div>
+                {{/each}}
+                <div><i class="add-skill highlightable fas fa-plus"></i></div>
             </div>
         </div>
     </div>

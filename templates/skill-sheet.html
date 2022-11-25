@@ -6,10 +6,22 @@
             <input class="item-name" type="text" name="name" value="{{item.name}}" />
         </div>
         <div class="row2">
-            <label for="system.base" class="skill-label">{{item.skillTitle}}</label>
-            <input class="skill-value" type="number" name="system.base" value="{{item.system.base}}" />
-            <span class="skill-label">+</span>
-            <input class="skill-value" type="number" name="system.modifier" value="{{item.system.modifier}}" />
+            <div class="row2-header">
+                <span class="header-row2-col1">Proficiency</span>
+                <!--Deleted for span- <span class="row2-col2"></span> -->
+                <span class="row2-col3"></span>
+                <span class="row2-col4">Modifiers</span>
+                <span class="row2-col5"></span>
+                <span class="row2-col6">Species</span>
+            </div>
+            <div class="row2-body">
+                <label for="system.base" class="row2-col1 skill-label">{{item.skillTitle}}</label>
+                <input class="row2-col2 skill-value" type="number" name="system.base" value="{{item.system.base}}" />
+                <span class="row2-col3 skill-label">+</span>
+                <input class="row2-col4 skill-value" type="number" name="system.modifier" value="{{item.system.modifier}}" />
+                <span class="row2-col5 skill-label">+</span>
+                <span class="row2-col6 skill-value">{{item.derived.species}}</span>
+            </div>
         </div>
     </div>
 

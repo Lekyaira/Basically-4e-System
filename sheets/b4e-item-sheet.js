@@ -35,17 +35,25 @@ export class b4eItemSheet extends ItemSheet {
 
     async _updateObject(event, formData){
         formData = expandObject(formData);
+        console.log(formData);
         if(formData['system']){
             if(formData.system['abilities']){
                 formData.system.abilities = Object.values(formData.system.abilities);
             }
+            if(formData.system['skills']){
+                formData.system.skills = Object.values(formData.system.skills);
+            }
         }
+        console.log(flattenObject(formData));
         super._updateObject(event, flattenObject(formData));
     }
 
     setSize() {
         if(this.item.type === "skill"){
-            this.setPosition({width: 400, height: 140});
+            this.setPosition({width: 480, height: 170});
+        }
+        if(this.item.type === "species"){
+            this.setPosition({width: 800, height: 400});
         }
     }
 
@@ -75,6 +83,33 @@ export class b4eItemSheet extends ItemSheet {
             const abilities = this.item.system.abilities;
             abilities.splice(index, 1);
             this.item.system.abilities = abilities;
+            if(this.actor){
+                this.actor.prepareDerivedData();
+                this.actor.sheet.render();
+            }
+            this.render();
+        });
+
+        $('.species-sheet .add-skill').click(ev => {
+            const skills = this.item.system.skills;
+            skills.push({
+                skill: "",
+                bonus: 0
+            });
+            this.item.system.skills = skills;
+            if(this.actor){
+                this.actor.prepareDerivedData();
+                this.actor.sheet.render();
+            }
+            this.render();
+        });
+
+        $('.species-sheet .delete-skill').click(ev => {
+            let idString = $(ev.currentTarget).attr("id");
+            let index = idString.split(":")[1];
+            const skills = this.item.system.skills;
+            skills.splice(index, 1);
+            this.item.system.skills = skills;
             if(this.actor){
                 this.actor.prepareDerivedData();
                 this.actor.sheet.render();

@@ -75,6 +75,7 @@
             "templates": [ "base" ],
 
             "abilities": [],
+            "skills": [],
 
             "sp": 6,
             "fours": 0,

@@ -321,10 +321,58 @@
 }
 
 .skill-sheet .row2 input[type=number] {
-    width: 1.6rem;
+    /*width: 1.6rem;*/
     height: 1.2rem;
     text-align: center;
 }
+
+.skill-sheet .skill-value, .skill-label {
+    text-align: center;
+}
+
+.skill-sheet .row2-header {
+    border-bottom: 1px solid;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+.skill-sheet .row2-header, .row2-body {
+    display: flex;
+}
+
+/*.skill-sheet .row2-col1, .row2-col2, .row2-col3, 
+.row2-col4, .row2-col5, .row2-col6, .header-row2-col1 {
+    border: 1px solid;
+}*/
+
+.skill-sheet .header-row2-col1 {
+    width: 9rem;
+}
+
+.skill-sheet .row2-col1 {
+    width: 6rem;
+}
+
+.skill-sheet .row2-col2 {
+    width: 3rem;
+}
+
+.skill-sheet .row2-col3 {
+    width: 2rem;
+}
+
+.skill-sheet .row2-col4 {
+    width: 6rem;
+}
+
+.skill-sheet .row2-col5 {
+    width: 2rem;
+}
+
+.skill-sheet .row2-col6 {
+    width: 5rem;
+}
+
 
 /****************************
  *                          *
@@ -380,4 +428,8 @@
 .species-sheet .row2-col2 input[type=number] {
     width: 2.4rem;
     text-align: left;
+}
+
+.species-sheet .row2-col3 {
+    margin-left: 4rem;
 }
