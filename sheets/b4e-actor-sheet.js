@@ -1,4 +1,5 @@
 import { templatepath } from "../core/utilities.js";
+import { b4eItem } from "../modules/b4e-item.js";
 
 //////////////
 // HOOKS    //
@@ -167,7 +168,7 @@ export class b4eActorSheet extends ActorSheet {
             let id = idString.split(":")[1];
             let item = this.actor.items.get(id);
             let skill = item.name;
-            let bonus = (item.system.base > 0 ? 2 : 0) + item.system.base + item.system.modifier;
+            let bonus = (item.system.base > 0 ? 2 : 0) + item.system.base + item.system.modifier + item.derived.species;
             
             // Roll the 1d20 + skill bonus and send to chat
             let roll = new Roll(`1d20 ${bonus >= 0 ? '+' : ''}${bonus}`);
@@ -227,7 +228,7 @@ export class b4eActorSheet extends ActorSheet {
         })
     }
 
-    getData() {
+    async getData() {
         // Retrieve the data structure from the base sheet.
         const context = super.getData();
         // Create a safe clone of item data
@@ -235,13 +236,13 @@ export class b4eActorSheet extends ActorSheet {
 
         // Prepare character data and items.
         if (this.actor.type == "character") {
-            context.itemData = this._prepareCharacterItemData(itemData);
+            context.itemData = await this._prepareCharacterItemData(itemData);
         }
 
         return context;
     }
 
-    _prepareCharacterItemData(itemData) {
+    async _prepareCharacterItemData(itemData) {
         const species = [];
         const skills = [];
 
@@ -261,10 +262,8 @@ export class b4eActorSheet extends ActorSheet {
             if(i.type === "skill") {
                 let speciesBonus = 0;
                 // Loop through the derived skills to see if we get a match
-                if(this.actor.derived.species.skills){
-                    for(let sk of this.actor.derived.species.skills){
-                        if(sk.skill === i.name) speciesBonus += sk.bonus;
-                    }
+                for(let sk of this.actor.derived.species.skills){
+                    if(sk.skill === i.name) speciesBonus += sk.bonus;
                 }
                 // Add the bonus to the skill item
                 i.derived.species = speciesBonus;
@@ -276,6 +275,27 @@ export class b4eActorSheet extends ActorSheet {
                 });
             }
         }
+        // Iterate through derived species bonus to skills
+        // If we don't have the skill, add it
+        for(let sk of this.actor.derived.species.skills){
+            if(sk.skill != "" && sk.bonus > 0){
+                const i = skills.findIndex((e) => e.name === sk.skill);
+                if(i == -1){    // We didn't find the item
+                    // Add a new Item object to actor
+                    let data = { 
+                        name: sk.skill, 
+                        type: "skill", 
+                        system: {base: 0, modifier: 0},
+                        derived: {species: sk.bonus}
+                    };
+                    this.actor.createEmbeddedDocuments("Item", [data]);
+                }
+                // Else modify the existing skill? Replace the stuff in the Items loop above?
+            }  
+        }
+        // Iterate through the skills on the actor and delete those that are just species bonus,
+        // but aren't in the species
+        
 
         // Assign groups to actor data
         let data = {
