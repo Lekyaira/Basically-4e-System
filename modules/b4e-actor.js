@@ -136,7 +136,7 @@ export class b4eActor extends Actor {
                         if(s == -1){
                             skills.push({skill: sk.skill, bonus: sk.bonus});
                         }
-                        else {  // We foudn the skill, add the bonus to it
+                        else {  // We found the skill, add the bonus to it
                             skills[s].bonus += sk.bonus;
                         }
                     }
