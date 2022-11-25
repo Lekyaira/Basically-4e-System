@@ -46,7 +46,9 @@ export class b4eActor extends Actor {
         let derived = this.derived;
 
         // Reset the species bonuses
-        derived.species = {};
+        derived.species = {
+            skills: []
+        };
 
         this.prepareItems();
 
@@ -126,14 +128,20 @@ export class b4eActor extends Actor {
                     }
 
                     // Set skill bonuses
+                    const skills = [];
                     for(let sk of i.system.skills){
-                        if(this.derived.species.skills[sk.skill]){
-                            this.derived.species.skills[sk.skill] += sk.bonus;
+                        if(i.system.skills.skill == '') break;
+                        const s = skills.findIndex((e) => e.skill == sk.skill);
+                        // didn't find it, push new item
+                        if(s == -1){
+                            skills.push({skill: sk.skill, bonus: sk.bonus});
                         }
-                        else {
-                            this.derived.species.skills[sk.skill] = sk.bonus;
+                        else {  // We foudn the skill, add the bonus to it
+                            skills[s].bonus += sk.bonus;
                         }
                     }
+
+                    this.derived.species.skills = skills;
 
                     // Set movement speeds
                     this.derived.species['sp'] = i.system.sp;

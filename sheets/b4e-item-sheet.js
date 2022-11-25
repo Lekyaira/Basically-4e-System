@@ -35,6 +35,7 @@ export class b4eItemSheet extends ItemSheet {
 
     async _updateObject(event, formData){
         formData = expandObject(formData);
+        console.log(formData);
         if(formData['system']){
             if(formData.system['abilities']){
                 formData.system.abilities = Object.values(formData.system.abilities);
@@ -43,6 +44,7 @@ export class b4eItemSheet extends ItemSheet {
                 formData.system.skills = Object.values(formData.system.skills);
             }
         }
+        console.log(flattenObject(formData));
         super._updateObject(event, flattenObject(formData));
     }
 
@@ -96,7 +98,7 @@ export class b4eItemSheet extends ItemSheet {
             });
             this.item.system.skills = skills;
             if(this.actor){
-                this.action.prepareDerivedData();
+                this.actor.prepareDerivedData();
                 this.actor.sheet.render();
             }
             this.render();

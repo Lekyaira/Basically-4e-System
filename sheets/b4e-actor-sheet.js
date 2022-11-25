@@ -261,8 +261,10 @@ export class b4eActorSheet extends ActorSheet {
             if(i.type === "skill") {
                 let speciesBonus = 0;
                 // Loop through the derived skills to see if we get a match
-                for(let sk of this.actor.derived.species.skills){
-                    if(sk.skill === i.name) speciesBonus += sk.bonus;
+                if(this.actor.derived.species.skills){
+                    for(let sk of this.actor.derived.species.skills){
+                        if(sk.skill === i.name) speciesBonus += sk.bonus;
+                    }
                 }
                 // Add the bonus to the skill item
                 i.derived.species = speciesBonus;

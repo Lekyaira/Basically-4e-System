@@ -38,8 +38,8 @@
                 {{#each item.system.skills as |sk index|}}
                 <div>
                     <i class="delete-skill highlightable fas fa-trash-can" id="index:{{index}}"></i>
-                    <input type="text" name="system.abilities.{{index}}.skill" value="{{sk.skill}}">
-                    <input type="number" name="system.abilities.{{index}}.bonus" value="{{sk.bonus}}">
+                    <input type="text" name="system.skills.{{index}}.skill" value="{{sk.skill}}">
+                    <input type="number" name="system.skills.{{index}}.bonus" value="{{sk.bonus}}">
                 </div>
                 {{/each}}
                 <div><i class="add-skill highlightable fas fa-plus"></i></div>
