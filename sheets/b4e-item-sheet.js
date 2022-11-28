@@ -60,6 +60,8 @@ export class b4eItemSheet extends ItemSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
+        $('.class-sheet .desc-editor').editable = false;
+
         // Everything below is only needed if the sheet is editable
         if (!this.isEditable) return;
 

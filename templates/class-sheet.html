@@ -1,6 +1,27 @@
-<form class="b4e class-sheet">
+<form class="b4e sheets class-sheet">
     <header>
         <img class="item-icon" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
-        <input class="titlename" type="text" name="name" value="{{item.name}}" />
+        <input class="item-name" type="text" name="name" value="{{item.name}}" />
     </header>
+    <section>
+        <div class="side-panel">
+            <div>
+                <label for="system.wp">WP</label>
+                <input type="text" id="wp" name="system.wp" value="{{item.system.wp}}">
+            </div>
+            <div>
+                <select>
+                    {{#select item.system.defense.defense}}
+                    {{#each item.defenses}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+                <input type="text" id="defense-bonus" name="system.defense.bonus" value="{{item.system.defense.bonus}}">
+            </div>
+        </div>
+        <div class="main">
+            {{editor item.system.description class="desc-editor" target="system.description" button=true editable=false}}
+        </div>
+    </section>
 </form>

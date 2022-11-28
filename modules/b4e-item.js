@@ -35,6 +35,15 @@ export class b4eItem extends Item {
         ]
     }
 
+    get defenses(){
+        return [
+            "fortitude",
+            "reflexes",
+            "will",
+            "insight"
+        ]
+    }
+
     derived = {
         species: 0
     };

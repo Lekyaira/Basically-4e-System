@@ -433,3 +433,48 @@
 .species-sheet .row2-col3 {
     margin-left: 4rem;
 }
+
+/****************************
+ *                          *
+ * Class Sheet Template     *
+ * class-sheet.html         *
+ *                          *
+ ****************************/
+
+ .class-sheet header {
+    display: flex;
+    margin-bottom: 1rem;
+ }
+
+ .class-sheet .item-icon {
+    width: 3rem;
+    height: 3rem;
+ }
+
+ .class-sheet header .item-name {
+    font-size: 2.5rem;
+    height: 3rem;
+    padding-left: 0.5rem;
+}
+
+.class-sheet section {
+    display: flex;
+}
+
+.class-sheet .side-panel {
+    width: 8rem;
+    border-right: 1px solid;
+    font-size: 1.3rem;
+}
+
+.class-sheet .side-panel select {
+    font-size: 1rem;
+}
+
+.class-sheet #wp {
+    width: 2rem;
+}
+
+.class-sheet #defense-bonus {
+    width: 2rem;
+}

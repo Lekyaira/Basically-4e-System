@@ -93,7 +93,10 @@
         },
 
         "class": {
-            "templates": [ "base" ]
+            "templates": [ "base" ],
+
+            "wp": 5,
+            "defense": {"defense":"fortitude", "bonus": 2}
         }
     }
 }
